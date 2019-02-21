@@ -1,0 +1,15 @@
+.pagination-div{user-select: none;bottom: 1rem; position: fixed}
+.pagination-div span{border-radius:3px;border:1px solid #999;
+    padding:5px;margin:10px 0px 0px 10px;display:inline-block}
+span.selected{background:#ccf;}
+
+.pagination-centered {
+    text-align: center;
+}
+.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+}
+.pointer-disabled {
+    pointer-events: none;
+}

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link th:href="@{/css/login.css}" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body>
+<section class="login-block">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 login-sec">
+                <h2 class="text-center">Inscrivez Vous Ici</h2>
+                <form th:object="${user}" class="login-form" method="post" th:action="@{/user/save}" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <span th:if="${#fields.hasErrors('nom')}" th:errors="*{nom}"></span>
+                        <label for="exampleInputName" class="text-uppercase">Nom d'utilisateur</label>
+                        <input id="exampleInputName" type="text" class="form-control"  placeholder="Entrer votre nom" th:field="*{nom}">
+                    </div>
+                    <div class="form-group">
+                        <span th:if="${#fields.hasErrors('prenom')}" th:errors="*{prenom}"></span>
+                        <label for="exampleInputPrenom" class="text-uppercase">Prenom d'utilisateur</label>
+                        <input id="exampleInputPrenom" type="text" class="form-control" placeholder="Entrer votre prenom" th:field="*{prenom}">
+                    </div>
+                    <div class="form-group">
+                        <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+                        <label for="exampleInputEmail1" class="text-uppercase">Email d'utilisateur</label>
+                        <input id="exampleInputEmail1" type="email" class="form-control" placeholder="Enter email" th:field="*{email}">
+                    </div>
+                    <div class="form-group">
+                        <span th:if="${#fields.hasErrors('matricule')}" th:errors="*{matricule}"></span>
+                        <label for="exampleInputMatricule" class="text-uppercase">Matricule d'utilisateur</label>
+                        <input id="exampleInputMatricule" type="text" class="form-control" placeholder="Entrer votre matricule" th:field="*{matricule}">
+                    </div>
+                    <div class="form-group">
+                        <span th:if="${#fields.hasErrors('telephone')}" th:errors="*{telephone}"></span>
+                        <label for="exampleInputTelephon" class="text-uppercase">Téléphone d'utilisateur</label>
+                        <input id="exampleInputTelephon" type="tel" class="form-control" placeholder="Entrer votre numero de téléphone" th:field="*{telephone}">
+                    </div>
+                    <div class="form-group">
+                        <span th:if="${#fields.hasErrors('type')}" th:errors="*{type}"></span>
+                        <label for="exampleInputDepartement" class="text-uppercase">Département d'utilisateur</label>
+                        <select id="exampleInputDepartement" class="form-control" th:field="*{type}">
+                            <option value="">Choisisser un Département</option>
+                            <option value="AGEPD">AGEPD</option>
+                            <option value="CLIMATO">CLIMATO</option>
+                            <option value="ENREN">ENREN</option>
+                            <option value="GCA">GCA</option>
+                            <option value="GTC">GTC</option>
+                            <option value="HYMAE">HYMAE</option>
+                            <option value="INFOTEL">INFOTEL</option>
+                            <option value="SCIENVI">SCIENVI</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
+                        <label for="exampleInputPassword1" class="text-uppercase">Mot de passe</label>
+                        <input id="exampleInputPassword1" type="password" class="form-control" placeholder="Entrer Votre Mot de Passe" th:field="*{password}">
+                    </div>
+                    <div class="form-group">
+                        <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
+                        <label for="exampleInputConfirm" class="text-uppercase">Confirmez Mot de passe</label>
+                        <input id="exampleInputConfirm" type="password" class="form-control" placeholder="Entrer de nouveau Votre Mot de Passe" th:field="*{password}">
+                    </div>
+                        <div class="form-group custom-file">
+                            <label for="userAvatar">Photo:</label>
+                            <input class="form-control-file border" type="file" name="file" id="userAvatar" />
+                        </div>
+
+                    <div class="form-check mt-3">
+                        <label class="form-check-label mt-2">
+                            <p class="form-check-input"></p>
+                            <a th:href="@{/login}">Se Connecter</a>
+                        </label>
+                        <button type="submit" class="btn btn-login float-right">Enregistrer</button>
+                    </div>
+                </form>
+                <div class="copy-text">Créé avec <i class="fa fa-heart"></i> by <a href="#">ENSPM</a></div>
+            </div>
+            <div class="col-md-8 banner-sec">
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                </div>
+            </div>
+        </div>
+</section>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</body>
+</html>
