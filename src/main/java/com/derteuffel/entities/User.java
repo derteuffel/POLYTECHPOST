@@ -9,7 +9,7 @@ import java.util.Collection;
  */
 @Entity
 public class User implements Serializable {
-
+    @Id
     private Long userId;
     private String nom;
     private String prenom;

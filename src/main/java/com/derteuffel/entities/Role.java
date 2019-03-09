@@ -1,6 +1,7 @@
 package com.derteuffel.entities;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import java.io.Serializable;
 import java.util.Collection;
@@ -10,6 +11,7 @@ import java.util.Collection;
  */
 @Entity
 public class Role implements Serializable {
+    @Id
     private Long roleId;
     private String name;
 
