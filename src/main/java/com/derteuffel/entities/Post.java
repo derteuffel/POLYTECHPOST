@@ -9,4 +9,6 @@ import java.io.Serializable;
 @Entity
 public class Post implements Serializable {
 
+    private Long postId;
+
 }
