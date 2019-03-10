@@ -15,7 +15,7 @@ public class User implements Serializable {
     private Long userId;
     private String nom;
     private String prenom;
-    private String matricul;
+    private String matricule;
     private String telephone;
     private String avatar;
     private String email;
@@ -23,21 +23,23 @@ public class User implements Serializable {
     private String departement;
     private Boolean active;
     private String resetToken;
+    private String type;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Collection<Role> roles;
 
     public User() {
     }
 
-    public User(Long userId, String nom, String prenom, String matricul, String telephone,
-                String avatar, String email, String password, String departement, Boolean active, Collection<Role> roles, String resetToken) {
+    public User(Long userId, String nom, String prenom, String matricule, String telephone,
+                String avatar, String email,String type, String password, String departement, Boolean active, Collection<Role> roles, String resetToken) {
         this.userId = userId;
         this.nom = nom;
         this.resetToken=resetToken;
         this.prenom = prenom;
-        this.matricul = matricul;
+        this.type=type;
+        this.matricule = matricule;
         this.telephone = telephone;
         this.avatar = avatar;
         this.email = email;
@@ -45,6 +47,14 @@ public class User implements Serializable {
         this.departement = departement;
         this.active = active;
         this.roles = roles;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getResetToken() {
@@ -79,12 +89,12 @@ public class User implements Serializable {
         this.prenom = prenom;
     }
 
-    public String getMatricul() {
-        return matricul;
+    public String getMatricule() {
+        return matricule;
     }
 
-    public void setMatricul(String matricul) {
-        this.matricul = matricul;
+    public void setMatricule(String matricule) {
+        this.matricule = matricule;
     }
 
     public String getTelephone() {

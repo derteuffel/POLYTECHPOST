@@ -29,6 +29,7 @@ public class UserController {
     @Autowired
     RoleRepository roleRepository;
 
+    @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @GetMapping("/registration")
@@ -51,8 +52,9 @@ public class UserController {
             model.addAttribute("errors","Il existe un Utililsateur avec le meme adresse email.");
             return "user/form";
         }else {
-            user.setActive(true);
+            System.out.println(user.getPassword());
             user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+            user.setActive(true);
             Role role= roleRepository.findByName("USER");
             if (user.getRoles() == null){
                 user.setRoles(new HashSet<Role>(Arrays.asList(role)));
