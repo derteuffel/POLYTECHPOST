@@ -13,6 +13,7 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpSession;
 import java.util.Arrays;
 import java.util.HashSet;
 
@@ -48,8 +49,11 @@ public class UserController {
         if (user1 != null){
             errors.rejectValue("email", "user.error", "There is already a user registered with the email provided");
         }
+        if (user1.getNom().equals(user.getNom())){
+            errors.rejectValue("nom", "user.error", "There is already a user registered with the name provided");
+        }
         if (errors.hasErrors()){
-            model.addAttribute("errors","Il existe un Utililsateur avec le meme adresse email.");
+            model.addAttribute("errors","Il existe un Utililsateur avec le meme adresse email ou le meme nom.");
             return "user/form";
         }else {
             System.out.println(user.getPassword());
@@ -94,8 +98,9 @@ public class UserController {
     }
 
     @GetMapping("/detail/{userId}")
-    public String detail(@PathVariable Long userId, Model model){
+    public String detail(@PathVariable Long userId, Model model, HttpSession session){
         User user= userRepository.getOne(userId);
+        session.setAttribute("roles", user.getRoles());
         AddRoleToUser form= new AddRoleToUser(roleRepository.findAll(),user);
         model.addAttribute("form", form);
         model.addAttribute("user",user);
