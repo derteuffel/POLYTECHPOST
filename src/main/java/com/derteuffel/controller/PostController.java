@@ -1,5 +1,7 @@
 package com.derteuffel.controller;
 
+import org.springframework.security.core.context.SecurityContextHolder;
+
 import com.derteuffel.entities.User;
 import com.derteuffel.repositories.PostRepository;
 import com.derteuffel.repositories.UserRepository;
@@ -26,13 +28,13 @@ public class PostController {
     private UserRepository userRepository;
 
     @GetMapping("/posts")
-    public String getAllPosts(Model model, HttpSession session){
+    public String getAllPosts(Model model, HttpSession session) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         User user1 = userRepository.findByNom(auth.getName());
 
         session.setAttribute("roles", user1.getRoles());
 
-        return "post/posts";
-
+        return "posts/posts";
     }
+
 }
