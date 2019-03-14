@@ -59,6 +59,7 @@ public class UserController {
             System.out.println(user.getPassword());
             user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
             user.setActive(true);
+            user.setStatus(true);
             Role role= roleRepository.findByName("USER");
             if (user.getRoles() == null){
                 user.setRoles(new HashSet<Role>(Arrays.asList(role)));
@@ -79,14 +80,16 @@ public class UserController {
     public String update(User user, @RequestParam("file") MultipartFile file){
         String fileName = fileUploadService.storeFile(file);
         user.setAvatar("/downloadFile/" + fileName);
-
+        user.setStatus(true);
         userRepository.save(user);
         return "redirect:/logout";
     }
 
     @GetMapping("/delete/{userId}")
     public String delete(@PathVariable Long userId){
-        userRepository.deleteById(userId);
+        User user= userRepository.getOne(userId);
+        user.setStatus(false);
+        userRepository.save(user);
         return "redirect:/user/users";
     }
 

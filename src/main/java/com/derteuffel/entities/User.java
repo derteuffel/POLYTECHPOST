@@ -3,6 +3,8 @@ package com.derteuffel.entities;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.List;
+import java.util.Set;
 
 /**
  * Created by derteuffel on 06/02/2019.
@@ -24,20 +26,28 @@ public class User implements Serializable {
     private Boolean active;
     private String resetToken;
     private String type;
+    private Boolean status;
 
     @ManyToMany
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Collection<Role> roles;
 
+    @ManyToMany(mappedBy = "users")
+    private Set<Groupe> groupes;
+
+    @OneToMany(mappedBy = "user")
+    private List<Post> posts;
+
     public User() {
     }
 
     public User(Long userId, String nom, String prenom, String matricule, String telephone,
-                String avatar, String email,String type, String password, String departement, Boolean active, Collection<Role> roles, String resetToken) {
+                String avatar, String email,String type, String password,Boolean status, String departement, Boolean active, Collection<Role> roles, String resetToken) {
         this.userId = userId;
         this.nom = nom;
         this.resetToken=resetToken;
         this.prenom = prenom;
+        this.status=status;
         this.type=type;
         this.matricule = matricule;
         this.telephone = telephone;
@@ -47,6 +57,30 @@ public class User implements Serializable {
         this.departement = departement;
         this.active = active;
         this.roles = roles;
+    }
+
+    public Set<Groupe> getGroupes() {
+        return groupes;
+    }
+
+    public Boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(Boolean status) {
+        this.status = status;
+    }
+
+    public void setGroupes(Set<Groupe> groupes) {
+        this.groupes = groupes;
+    }
+
+    public List<Post> getPosts() {
+        return posts;
+    }
+
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
     }
 
     public String getType() {

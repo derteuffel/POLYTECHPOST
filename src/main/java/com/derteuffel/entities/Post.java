@@ -3,6 +3,7 @@ package com.derteuffel.entities;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import java.io.Serializable;
 import java.sql.Date;
 import java.util.ArrayList;
@@ -20,6 +21,10 @@ public class Post implements Serializable {
     private Date postDate;
     private ArrayList<String> pieces;
 
+    @ManyToOne
+    private Groupe groupe;
+
+    @ManyToOne
     private User user;
 
     public Post() {
@@ -78,5 +83,13 @@ public class Post implements Serializable {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Groupe getGroupe() {
+        return groupe;
+    }
+
+    public void setGroupe(Groupe groupe) {
+        this.groupe = groupe;
     }
 }

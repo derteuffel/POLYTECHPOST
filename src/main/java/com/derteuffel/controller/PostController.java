@@ -30,9 +30,11 @@ public class PostController {
     @GetMapping("/posts")
     public String getAllPosts(Model model, HttpSession session) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        User user1 = userRepository.findByNom(auth.getName());
+        User user = userRepository.findByNom(auth.getName());
 
-        session.setAttribute("roles", user1.getRoles());
+        session.setAttribute("roles", user.getRoles());
+        session.setAttribute("userName",user.getNom());
+        session.setAttribute("userAvatar",user.getAvatar());
 
         return "posts/posts";
     }

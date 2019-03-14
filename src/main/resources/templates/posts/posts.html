@@ -29,7 +29,7 @@
 			<div class="container">
 				<div class="header-data">
 					<div class="logo">
-						<a th:href="@{/post/posts}" title=""><img th:src="@{/images/polytech-logo.png}" alt="ENSPM LOGO"></a>
+						<a th:href="@{/post/posts}" title=""><img th:src="@{/images/polytech-logo.png}" width="60" height="40" alt="ENSPM LOGO"></a>
 					</div><!--logo end-->
 					<div class="search-bar">
 						<form>
@@ -65,10 +65,19 @@
 					<div class="menu-btn">
 						<a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title=""><i class="fa fa-bars"></i></a>
 					</div><!--menu-btn end-->
-					<div class="user-account">
+					<div class="user-account" th:if="${session.userName}">
 						<div class="user-info">
-							<img th:src="@{/WorkWise/user.png}" alt="">
-							<a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="">Neword</a>
+							<img th:src="${session.userAvatar}" width="60" height="60" class="rounded-circle" alt="">
+							<a th:href="${session.userName}" th:text="${session.userName}" title="">Neword</a>
+							<i class="la la-sort-down"></i>
+						</div>
+					</div>
+					<div class="user-account" th:unless="${session.userName}">
+						<div class="user-info row">
+							<div class="col-5">
+								<img th:src="@{/images/default-profile.png}" width="60" height="60" class="rounded-circle" alt="">
+							</div>
+							<a th:href="${session.userName}" th:text="${session.userName}" title="">Neword</a>
 							<i class="la la-sort-down"></i>
 						</div>
 					</div>
@@ -256,7 +265,7 @@
 													<span>Graphic Designer</span>
 													<ul>
 														<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" class="followw" tabindex="-1">Follow</a></li>
-														<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" class="envlp" tabindex="-1"><img src="./WorkWise/envelop.png" alt=""></a></li>
+														<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" class="envlp" tabindex="-1"><img th:src="@{/WorkWise/envelop.png}" alt=""></a></li>
 														<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" class="hire" tabindex="-1">hire</a></li>
 													</ul>
 													<a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" tabindex="-1">View Profile</a>
@@ -266,7 +275,7 @@
 													<span>Graphic Designer</span>
 													<ul>
 														<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" class="followw" tabindex="-1">Follow</a></li>
-														<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" class="envlp" tabindex="-1"><img src="./WorkWise/envelop.png" alt=""></a></li>
+														<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" class="envlp" tabindex="-1"><img th:src="@{/WorkWise/envelop.png}" alt=""></a></li>
 														<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" class="hire" tabindex="-1">hire</a></li>
 													</ul>
 													<a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" tabindex="-1">View Profile</a>
@@ -276,7 +285,7 @@
 													<span>Graphic Designer</span>
 													<ul>
 														<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" class="followw" tabindex="-1">Follow</a></li>
-														<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" class="envlp" tabindex="-1"><img src="./WorkWise Html Template_files/envelop.png" alt=""></a></li>
+														<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" class="envlp" tabindex="-1"><img th:src="@{/WorkWise/envelop.png}" alt=""></a></li>
 														<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" class="hire" tabindex="-1">hire</a></li>
 													</ul>
 													<a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" tabindex="-1">View Profile</a>
@@ -286,7 +295,7 @@
 													<span>Graphic Designer</span>
 													<ul>
 														<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" class="followw" tabindex="-1">Follow</a></li>
-														<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" class="envlp" tabindex="-1"><img src="./WorkWise/envelop.png" alt=""></a></li>
+														<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" class="envlp" tabindex="-1"><img th:src="@{/WorkWise/envelop.png}" alt=""></a></li>
 														<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" class="hire" tabindex="-1">hire</a></li>
 													</ul>
 													<a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" tabindex="-1">View Profile</a>
@@ -296,7 +305,7 @@
 													<span>Graphic Designer</span>
 													<ul>
 														<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" class="followw" tabindex="-1">Follow</a></li>
-														<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" class="envlp" tabindex="-1"><img src="./WorkWise/envelop.png" alt=""></a></li>
+														<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" class="envlp" tabindex="-1"><img th:src="@{/WorkWise/envelop.png}" alt=""></a></li>
 														<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" class="hire" tabindex="-1">hire</a></li>
 													</ul>
 													<a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" tabindex="-1">View Profile</a>
@@ -306,7 +315,7 @@
 													<span>Graphic Designer</span>
 													<ul>
 														<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" class="followw" tabindex="-1">Follow</a></li>
-														<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" class="envlp" tabindex="-1"><img src="./WorkWise/envelop.png" alt=""></a></li>
+														<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" class="envlp" tabindex="-1"><img th:src="@{/WorkWise/envelop.png}" alt=""></a></li>
 														<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" class="hire" tabindex="-1">hire</a></li>
 													</ul>
 													<a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" tabindex="-1">View Profile</a>
@@ -316,7 +325,7 @@
 													<span>Graphic Designer</span>
 													<ul>
 														<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" class="followw" tabindex="0">Follow</a></li>
-														<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" class="envlp" tabindex="0"><img src="./WorkWise/envelop.png" alt=""></a></li>
+														<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" class="envlp" tabindex="0"><img th:src="@{/WorkWise/envelop.png}" alt=""></a></li>
 														<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" class="hire" tabindex="0">hire</a></li>
 													</ul>
 													<a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" tabindex="0">View Profile</a>
@@ -565,7 +574,7 @@
 																</div>
 																<div class="comment">
 																	<h3>John Doe</h3>
-																	<span><img src="./WorkWise/clock.png" alt=""> 3 min ago</span>
+																	<span><img th:src="@{/WorkWise/clock.png}" alt=""> 3 min ago</span>
 																	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam luctus hendrerit metus, ut ullamcorper quam finibus at.</p>
 																	<a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title=""><i class="fa fa-reply-all"></i>Reply</a>
 																</div>
@@ -587,7 +596,7 @@
 											</div><!--comment-section end-->
 										</div><!--posty end-->
 										<div class="process-comm">
-											<a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title=""><img src="./WorkWise Html Template_files/process-icon.png" alt=""></a>
+											<a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title=""><img th:src="@{/WorkWise/process-icon.png}" alt=""></a>
 										</div><!--process-comm end-->
 									</div><!--posts-section end-->
 								</div><!--main-ws-sec end-->
