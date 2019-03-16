@@ -5,8 +5,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import java.io.Serializable;
-import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Created by derteuffel on 10/02/2019.
@@ -18,7 +18,7 @@ public class Post implements Serializable {
     private Long postId;
     private String postTitle;
     private String postDescription;
-    private Date postDate;
+    private Date postDate= new Date();
     private ArrayList<String> pieces;
 
     @ManyToOne

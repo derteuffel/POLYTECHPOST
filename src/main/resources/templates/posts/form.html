@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link th:href="@{/css/login.css}" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body>
+<section class="login-block">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 login-sec">
+                <h2 class="text-center">Entrez votre publication ici</h2>
+                <div  class="" id="addPost" tabindex="-1" role="dialog" data-keyboard="false">
+                    <div class="modal-dialog modal-dialog-centered"  role="document">
+                        <form class="add-these-form modal-content card text-center" th:object="${post}" method="post" th:action="@{/post/save}"enctype="multipart/form-data">
+                            <!-- user id -->
+                            <input type="number" name="userId" th:value="${session.userId}" style="display:none">
+                            <!-- user id -->
+                            <div class=" p-4">
+                                <div class="form-group" style="width: 100%">
+                                    <span class='error' id="nameError"></span>
+                                    <input type="text" name="postTitle" id="name" class="form-control" placeholder="Titre de la Publication" />
+                                </div>
+                                <div class="form-group">
+                                    <label > Description :</label>
+                                    <textarea class="form-control" rows="10" name="postDescription"></textarea>
+                                </div>
+                                <div class="img-upload-div">
+                                    <div class="custom-file mb-3">
+                                        <p class="mb-0">Fichiers:</p>
+                                        <input type="file" multiple class="form-control-file border" id="customFile" name="files">
+                                    </div>
+                                </div>
+                                <div class="form-group row form-button mt-3" style="width: 100%">
+                                    <div class="col-6">
+                                        <a th:href="@{/post/posts}" style="width:100%;" class="btn btn-danger">Cancel</a>
+                                    </div>
+                                    <div class="col-6">
+                                        <button type="submit" id="submit" style="width:100%;"  class="btn btn-success">Valider</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+                <div class="copy-text">Créé avec <i class="fa fa-heart"></i> par <a href="#">ENSPM</a></div>
+            </div>
+            <div class="col-md-4 banner-sec">
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                </div>
+            </div>
+        </div>
+</section>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</body>
+</html>

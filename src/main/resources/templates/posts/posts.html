@@ -10,21 +10,23 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" th:href="@{/WorkWise/animate.css}">
 <link rel="stylesheet" type="text/css" th:href="@{/WorkWise/bootstrap.min.css}">
+<link rel="stylesheet" type="text/css" th:href="@{/bootstrap-4.1/bootstrap.min.css}">
+
 <link rel="stylesheet" type="text/css" th:href="@{/WorkWise/jquery.mCustomScrollbar.min.css}">
 <link rel="stylesheet" type="text/css" th:href="@{/WorkWise/slick.css}">
 <link rel="stylesheet" type="text/css" th:href="@{/WorkWise/slick-theme.css}">
 <link rel="stylesheet" type="text/css" th:href="@{/WorkWise/style.css}">
 <link rel="stylesheet" type="text/css" th:href="@{/WorkWise/responsive.css}">
-<script th:src="@{/WorkWise/jquery.mousewheel.min.js.téléchargement}"></script></head>
+<script th:src="@{/WorkWise/jquery.mousewheel.min.js.téléchargement}"></script>
+<script th:src="@{/bootstrap-4.1/bootstrap.min.js}"></script>
+<script th:src="@{/bootstrap-4.1/popper.min.js}"></script>
+</head>
 
 
 <body>
 	
 
 	<div class="wrapper">
-		
-
-
 		<header>
 			<div class="container">
 				<div class="header-data">
@@ -85,7 +87,8 @@
 			</div>
 		</header><!--header end-->	
 
-		<main><div class="main-section">
+		<main>
+			<div class="main-section">
 				<div class="container">
 					<div class="main-section-data">
 						<div class="row">
@@ -94,76 +97,20 @@
 									<div class="user-data full-width">
 										<div class="user-profile">
 											<div class="username-dt">
-												<div class="usr-pic">
-													<img th:src="@{/WorkWise/user-pic.png}" alt="">
+												<div class="usr-pic" th:if="${session.userAvatar}">
+													<img th:src="${session.userAvatar}" alt="">
+												</div>
+												<div class="usr-pic" th:unless="${session.userAvatar}">
+													<img th:src="@{/images/default-image.png}" alt="">
 												</div>
 											</div><!--username-dt end-->
 											<div class="user-specs">
-												<h3>John Doe</h3>
-												<span>Graphic Designer at Self Employed</span>
+												<h3 th:text="${session.userName}">John Doe</h3>
+												<span th:text="${user.departement}">Graphic Designer at Self Employed</span>
 											</div>
 										</div><!--user-profile end-->
 										
 									</div><!--user-data end-->
-									<div class="suggestions full-width">
-										<div class="sd-title">
-											<h3>Departements</h3>
-											<i class="la la-ellipsis-v"></i>
-										</div><!--sd-title end-->
-										<div class="suggestions-list">
-											<div class="suggestion-usd">
-												<img th:src="@{/WorkWise/s1.png}" alt="">
-												<div class="sgt-text">
-													<h4>Jessica William</h4>
-													<span>Graphic Designer</span>
-												</div>
-												<span><i class="la la-plus"></i></span>
-											</div>
-											<div class="suggestion-usd">
-												<img th:src="@{/WorkWise/s2.png}" alt="">
-												<div class="sgt-text">
-													<h4>John Doe</h4>
-													<span>PHP Developer</span>
-												</div>
-												<span><i class="la la-plus"></i></span>
-											</div>
-											<div class="suggestion-usd">
-												<img th:src="@{/WorkWise/s3.png}" alt="">
-												<div class="sgt-text">
-													<h4>Poonam</h4>
-													<span>Wordpress Developer</span>
-												</div>
-												<span><i class="la la-plus"></i></span>
-											</div>
-											<div class="suggestion-usd">
-												<img th:src="@{/WorkWise/s4.png}" alt="">
-												<div class="sgt-text">
-													<h4>Bill Gates</h4>
-													<span>C &amp; C++ Developer</span>
-												</div>
-												<span><i class="la la-plus"></i></span>
-											</div>
-											<div class="suggestion-usd">
-												<img th:src="@{/WorkWise/s5.png}" alt="">
-												<div class="sgt-text">
-													<h4>Jessica William</h4>
-													<span>Graphic Designer</span>
-												</div>
-												<span><i class="la la-plus"></i></span>
-											</div>
-											<div class="suggestion-usd">
-												<img th:src="@{/WorkWise/s6.png}" alt="">
-												<div class="sgt-text">
-													<h4>John Doe</h4>
-													<span>PHP Developer</span>
-												</div>
-												<span><i class="la la-plus"></i></span>
-											</div>
-											<div class="view-more">
-												<a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="">View More</a>
-											</div>
-										</div><!--suggestions-list end-->
-									</div><!--suggestions end-->
 									<div class="tags-sec full-width">
 										<ul>
 											<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="">Help Center</a></li>
@@ -185,24 +132,30 @@
 							<div class="col-lg-6 col-md-8 no-pd">
 								<div class="main-ws-sec">
 									<div class="post-topbar">
-										<div class="user-picy">
-											<img th:src="@{/WorkWise/user-pic.png}" alt="">
+										<div class="user-picy" th:if="${session.userAvatar}">
+											<img th:src="${session.userAvatar}" alt="">
+										</div>
+										<div class="user-picy" th:unless="${session.userAvatar}">
+											<img th:src="@{/images/default-profile.png}" alt="">
 										</div>
 										<div class="post-st">
 											<ul>
 												<li><a class="post_project" href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="">Post a Project</a></li>
-												<li><a class="post-jb active" href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="">Post a Job</a></li>
+												<li><a class="post-jb active" th:href="@{/post/form}" >Creer une Publication</a></li>
 											</ul>
 										</div><!--post-st end-->
-									</div><!--post-topbar end-->
+									</div>
+									<!--post-topbar end-->
 									<div class="posts-section">
+										<div th:each="post : ${posts}">
 										<div class="post-bar">
 											<div class="post_topbar">
 												<div class="usy-dt">
-													<img th:src="@{/WorkWise/us-pic.png}" alt="">
+													<img th:if="${session.userAvatar}" th:src="${session.userAvatar}" width="60" height="60" alt="" class="rounded-circle">
+													<img th:unless="${session.userAvatar}" th:src="@{/images/default-profile.png}" width="60" height="60" alt="" class="rounded-circle">
 													<div class="usy-name">
-														<h3>John Doe</h3>
-														<span><img th:src="@{/WorkWise/clock.png}" alt="">3 min ago</span>
+														<h3 th:text="${post.user.nom}">John Doe</h3>
+														<span><img th:src="@{/WorkWise/clock.png}" alt=""><span th:text="${post.postDate}"></span></span>
 													</div>
 												</div>
 												<div class="ed-opts">
@@ -218,8 +171,8 @@
 											</div>
 											<div class="epi-sec">
 												<ul class="descp">
-													<li><img th:src="@{/WorkWise/icon8.png}" alt=""><span>Epic Coder</span></li>
-													<li><img th:src="@{/WorkWise/icon9.png}" alt=""><span>India</span></li>
+													<li><img th:src="@{/WorkWise/icon8.png}" alt=""><span>ENSPM</span></li>
+													<li><img th:src="@{/WorkWise/icon9.png}" alt=""><span th:text="${post.user.departement}">India</span></li>
 												</ul>
 												<ul class="bk-links">
 													<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title=""><i class="la la-bookmark"></i></a></li>
@@ -227,394 +180,39 @@
 												</ul>
 											</div>
 											<div class="job_descp">
-												<h3>Senior Wordpress Developer</h3>
-												<ul class="job-dt">
-													<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="">Full Time</a></li>
-													<li><span>$30 / hr</span></li>
-												</ul>
-												<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam luctus hendrerit metus, ut ullamcorper quam finibus at. Etiam id magna sit amet... <a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="">view more</a></p>
-												<ul class="skill-tags">
-													<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="">HTML</a></li>
-													<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="">PHP</a></li>
-													<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="">CSS</a></li>
-													<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="">Javascript</a></li>
-													<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="">Wordpress</a></li> 	
-												</ul>
+												<h3 th:text="${post.postTitle}"></h3>
+												<p th:text="${post.postDescription}">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam luctus hendrerit metus, ut ullamcorper quam finibus at. Etiam id magna sit amet... <a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="">view more</a></p>
 											</div>
 											<div class="job-status-bar">
 												<ul class="like-com">
 													<li>
-														<a href="http://gambolthemes.net/workwise_demo/HTML/index.html#"><i class="la la-heart"></i> Like</a>
+														<a href="http://gambolthemes.net/workwise_demo/HTML/index.html#"><i class="la la-heart"></i> J'aime</a>
 														<img th:src="@{/WorkWise/liked-img.png}" alt="">
 														<span>25</span>
 													</li> 
-													<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" class="com"><img th:src="@{/WorkWise/com.png}" alt=""> Comment 15</a></li>
+													<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" class="com"><img th:src="@{/WorkWise/com.png}" alt=""> Commentaires 15</a></li>
 												</ul>
-												<a><i class="la la-eye"></i>Views 50</a>
+												<a><i class="la la-eye"></i>Vues 50</a>
 											</div>
 										</div><!--post-bar end-->
-										<div class="top-profiles">
-											<div class="pf-hd">
-												<h3>Top Profiles</h3>
-												<i class="la la-ellipsis-v"></i>
-											</div>
-											<div class="profiles-slider slick-initialized slick-slider"><span class="slick-previous slick-arrow" style="display: inline;"></span>
-												<div class="slick-list draggable"><div class="slick-track" style="opacity: 1; width: 2490px; transform: translate3d(-996px, 0px, 0px);"><div class="user-profy slick-slide slick-cloned" data-slick-index="-3" aria-hidden="true" style="width: 158px;" tabindex="-1">
-													<img th:src="@{/WorkWise/user1.png}" alt="">
-													<h3>John Doe</h3>
-													<span>Graphic Designer</span>
-													<ul>
-														<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" class="followw" tabindex="-1">Follow</a></li>
-														<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" class="envlp" tabindex="-1"><img th:src="@{/WorkWise/envelop.png}" alt=""></a></li>
-														<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" class="hire" tabindex="-1">hire</a></li>
-													</ul>
-													<a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" tabindex="-1">View Profile</a>
-												</div><div class="user-profy slick-slide slick-cloned" data-slick-index="-2" aria-hidden="true" style="width: 158px;" tabindex="-1">
-													<img th:src="@{/WorkWise/user2.png}" alt="">
-													<h3>John Doe</h3>
-													<span>Graphic Designer</span>
-													<ul>
-														<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" class="followw" tabindex="-1">Follow</a></li>
-														<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" class="envlp" tabindex="-1"><img th:src="@{/WorkWise/envelop.png}" alt=""></a></li>
-														<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" class="hire" tabindex="-1">hire</a></li>
-													</ul>
-													<a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" tabindex="-1">View Profile</a>
-												</div><div class="user-profy slick-slide slick-cloned" data-slick-index="-1" aria-hidden="true" style="width: 158px;" tabindex="-1">
-													<img th:src="@{/WorkWise/user3.png}" alt="">
-													<h3>John Doe</h3>
-													<span>Graphic Designer</span>
-													<ul>
-														<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" class="followw" tabindex="-1">Follow</a></li>
-														<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" class="envlp" tabindex="-1"><img th:src="@{/WorkWise/envelop.png}" alt=""></a></li>
-														<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" class="hire" tabindex="-1">hire</a></li>
-													</ul>
-													<a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" tabindex="-1">View Profile</a>
-												</div><div class="user-profy slick-slide" data-slick-index="0" aria-hidden="true" style="width: 158px;" tabindex="-1">
-													<img th:src="@{/WorkWise/user1.png}" alt="">
-													<h3>John Doe</h3>
-													<span>Graphic Designer</span>
-													<ul>
-														<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" class="followw" tabindex="-1">Follow</a></li>
-														<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" class="envlp" tabindex="-1"><img th:src="@{/WorkWise/envelop.png}" alt=""></a></li>
-														<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" class="hire" tabindex="-1">hire</a></li>
-													</ul>
-													<a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" tabindex="-1">View Profile</a>
-												</div><div class="user-profy slick-slide" data-slick-index="1" aria-hidden="true" style="width: 158px;" tabindex="-1">
-													<img th:src="@{/WorkWise/user2.png}" alt="">
-													<h3>John Doe</h3>
-													<span>Graphic Designer</span>
-													<ul>
-														<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" class="followw" tabindex="-1">Follow</a></li>
-														<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" class="envlp" tabindex="-1"><img th:src="@{/WorkWise/envelop.png}" alt=""></a></li>
-														<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" class="hire" tabindex="-1">hire</a></li>
-													</ul>
-													<a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" tabindex="-1">View Profile</a>
-												</div><div class="user-profy slick-slide" data-slick-index="2" aria-hidden="true" style="width: 158px;" tabindex="-1">
-													<img th:src="@{/WorkWise/user3.png}" alt="">
-													<h3>John Doe</h3>
-													<span>Graphic Designer</span>
-													<ul>
-														<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" class="followw" tabindex="-1">Follow</a></li>
-														<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" class="envlp" tabindex="-1"><img th:src="@{/WorkWise/envelop.png}" alt=""></a></li>
-														<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" class="hire" tabindex="-1">hire</a></li>
-													</ul>
-													<a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" tabindex="-1">View Profile</a>
-												</div><div class="user-profy slick-slide slick-current slick-active" data-slick-index="3" aria-hidden="false" style="width: 158px;" tabindex="0">
-													<img th:src="@{/WorkWise/user1.png}" alt="">
-													<h3>John Doe</h3>
-													<span>Graphic Designer</span>
-													<ul>
-														<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" class="followw" tabindex="0">Follow</a></li>
-														<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" class="envlp" tabindex="0"><img th:src="@{/WorkWise/envelop.png}" alt=""></a></li>
-														<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" class="hire" tabindex="0">hire</a></li>
-													</ul>
-													<a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" tabindex="0">View Profile</a>
-												</div><div class="user-profy slick-slide slick-active" data-slick-index="4" aria-hidden="false" style="width: 158px;" tabindex="0">
-													<img th:src="@{/WorkWise/user2.png}" alt="">
-													<h3>John Doe</h3>
-													<span>Graphic Designer</span>
-													<ul>
-														<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" class="followw" tabindex="0">Follow</a></li>
-														<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" class="envlp" tabindex="0"><img src="./WorkWise/envelop.png" alt=""></a></li>
-														<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" class="hire" tabindex="0">hire</a></li>
-													</ul>
-													<a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" tabindex="0">View Profile</a>
-												</div><div class="user-profy slick-slide slick-active" data-slick-index="5" aria-hidden="false" style="width: 158px;" tabindex="0">
-													<img th:src="@{/WorkWise/user3.png}" alt="">
-													<h3>John Doe</h3>
-													<span>Graphic Designer</span>
-													<ul>
-														<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" class="followw" tabindex="0">Follow</a></li>
-														<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" class="envlp" tabindex="0"><img src="./WorkWise/envelop.png" alt=""></a></li>
-														<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" class="hire" tabindex="0">hire</a></li>
-													</ul>
-													<a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" tabindex="0">View Profile</a>
-												</div><div class="user-profy slick-slide slick-cloned" data-slick-index="6" aria-hidden="true" style="width: 158px;" tabindex="-1">
-													<img th:src="@{/WorkWise/user1.png}" alt="">
-													<h3>John Doe</h3>
-													<span>Graphic Designer</span>
-													<ul>
-														<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" class="followw" tabindex="-1">Follow</a></li>
-														<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" class="envlp" tabindex="-1"><img src="./WorkWise/envelop.png" alt=""></a></li>
-														<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" class="hire" tabindex="-1">hire</a></li>
-													</ul>
-													<a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" tabindex="-1">View Profile</a>
-												</div><div class="user-profy slick-slide slick-cloned" data-slick-index="7" aria-hidden="true" style="width: 158px;" tabindex="-1">
-													<img th:src="@{/WorkWise/user2.png}" alt="">
-													<h3>John Doe</h3>
-													<span>Graphic Designer</span>
-													<ul>
-														<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" class="followw" tabindex="-1">Follow</a></li>
-														<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" class="envlp" tabindex="-1"><img src="./WorkWise/envelop.png" alt=""></a></li>
-														<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" class="hire" tabindex="-1">hire</a></li>
-													</ul>
-													<a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" tabindex="-1">View Profile</a>
-												</div><div class="user-profy slick-slide slick-cloned" data-slick-index="8" aria-hidden="true" style="width: 158px;" tabindex="-1">
-													<img th:src="@{/WorkWise/user3.png}" alt="">
-													<h3>John Doe</h3>
-													<span>Graphic Designer</span>
-													<ul>
-														<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" class="followw" tabindex="-1">Follow</a></li>
-														<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" class="envlp" tabindex="-1"><img src="./WorkWise/envelop.png" alt=""></a></li>
-														<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" class="hire" tabindex="-1">hire</a></li>
-													</ul>
-													<a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" tabindex="-1">View Profile</a>
-												</div><div class="user-profy slick-slide slick-cloned" data-slick-index="9" aria-hidden="true" style="width: 158px;" tabindex="-1">
-													<img th:src="@{/WorkWise/user1.png}" alt="">
-													<h3>John Doe</h3>
-													<span>Graphic Designer</span>
-													<ul>
-														<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" class="followw" tabindex="-1">Follow</a></li>
-														<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" class="envlp" tabindex="-1"><img src="./WorkWise/envelop.png" alt=""></a></li>
-														<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" class="hire" tabindex="-1">hire</a></li>
-													</ul>
-													<a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" tabindex="-1">View Profile</a>
-												</div><div class="user-profy slick-slide slick-cloned" data-slick-index="10" aria-hidden="true" style="width: 158px;" tabindex="-1">
-													<img th:src="@{/WorkWise/user2.png}" alt="">
-													<h3>John Doe</h3>
-													<span>Graphic Designer</span>
-													<ul>
-														<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" class="followw" tabindex="-1">Follow</a></li>
-														<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" class="envlp" tabindex="-1"><img src="./WorkWise/envelop.png" alt=""></a></li>
-														<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" class="hire" tabindex="-1">hire</a></li>
-													</ul>
-													<a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" tabindex="-1">View Profile</a>
-												</div><div class="user-profy slick-slide slick-cloned" data-slick-index="11" aria-hidden="true" style="width: 158px;" tabindex="-1">
-													<img th:src="@{/WorkWise/user3.png}" alt="">
-													<h3>John Doe</h3>
-													<span>Graphic Designer</span>
-													<ul>
-														<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" class="followw" tabindex="-1">Follow</a></li>
-														<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" class="envlp" tabindex="-1"><img src="./WorkWise/envelop.png" alt=""></a></li>
-														<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" class="hire" tabindex="-1">hire</a></li>
-													</ul>
-													<a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" tabindex="-1">View Profile</a>
-												</div></div></div><!--user-profy end-->
-												<!--user-profy end-->
-												<!--user-profy end-->
-												<!--user-profy end-->
-												<!--user-profy end-->
-												<!--user-profy end-->
-											<span class="slick-nexti slick-arrow" style="display: inline;"></span></div><!--profiles-slider end-->
-										</div><!--top-profiles end-->
-										<div class="post-bar">
-											<div class="post_topbar">
-												<div class="usy-dt">
-													<img th:src="@{/WorkWise/us-pic.png}" alt="">
-													<div class="usy-name">
-														<h3>John Doe</h3>
-														<span><img th:src="@{/WorkWise/clock.png}" alt="">3 min ago</span>
-													</div>
-												</div>
-												<div class="ed-opts">
-													<a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" class="ed-opts-open"><i class="la la-ellipsis-v"></i></a>
-													<ul class="ed-options">
-														<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="">Edit Post</a></li>
-														<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="">Unsaved</a></li>
-														<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="">Unbid</a></li>
-														<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="">Close</a></li>
-														<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="">Hide</a></li>
-													</ul>
-												</div>
-											</div>
-											<div class="epi-sec">
-												<ul class="descp">
-													<li><img th:src="@{/WorkWise/icon8.png}" alt=""><span>Epic Coder</span></li>
-													<li><img th:src="@{/WorkWise/icon9.png}" alt=""><span>India</span></li>
-												</ul>
-												<ul class="bk-links">
-													<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title=""><i class="la la-bookmark"></i></a></li>
-													<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title=""><i class="la la-envelope"></i></a></li>
-													<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" class="bid_now">Bid Now</a></li>
-												</ul>
-											</div>
-											<div class="job_descp">
-												<h3>Senior Wordpress Developer</h3>
-												<ul class="job-dt">
-													<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="">Full Time</a></li>
-													<li><span>$30 / hr</span></li>
-												</ul>
-												<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam luctus hendrerit metus, ut ullamcorper quam finibus at. Etiam id magna sit amet... <a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="">view more</a></p>
-												<ul class="skill-tags">
-													<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="">HTML</a></li>
-													<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="">PHP</a></li>
-													<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="">CSS</a></li>
-													<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="">Javascript</a></li>
-													<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="">Wordpress</a></li> 	
-												</ul>
-											</div>
-											<div class="job-status-bar">
-												<ul class="like-com">
-													<li>
-														<a href="http://gambolthemes.net/workwise_demo/HTML/index.html#"><i class="la la-heart"></i> Like</a>
-														<img th:src="@{/WorkWise/liked-img.png}" alt="">
-														<span>25</span>
-													</li> 
-													<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" class="com"><img th:src="@{/WorkWise/com.png}" alt=""> Comment 15</a></li>
-												</ul>
-												<a><i class="la la-eye"></i>Views 50</a>
-											</div>
-										</div><!--post-bar end-->
-										<div class="posty">
-											<div class="post-bar no-margin">
-												<div class="post_topbar">
-													<div class="usy-dt">
-														<img th:src="@{/WorkWise/us-pc2.png}" alt="">
-														<div class="usy-name">
-															<h3>John Doe</h3>
-															<span><img th:src="@{/WorkWise/clock.png}" alt="">3 min ago</span>
-														</div>
-													</div>
-													<div class="ed-opts">
-														<a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" class="ed-opts-open"><i class="la la-ellipsis-v"></i></a>
-														<ul class="ed-options">
-															<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="">Edit Post</a></li>
-															<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="">Unsaved</a></li>
-															<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="">Unbid</a></li>
-															<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="">Close</a></li>
-															<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="">Hide</a></li>
-														</ul>
-													</div>
-												</div>
-												<div class="epi-sec">
-													<ul class="descp">
-														<li><img th:src="@{/WorkWise/icon8.png}" alt=""><span>Epic Coder</span></li>
-														<li><img th:src="@{/WorkWise/icon9.png}" alt=""><span>India</span></li>
-													</ul>
-													<ul class="bk-links">
-														<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title=""><i class="la la-bookmark"></i></a></li>
-														<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title=""><i class="la la-envelope"></i></a></li>
-													</ul>
-												</div>
-												<div class="job_descp">
-													<h3>Senior Wordpress Developer</h3>
-													<ul class="job-dt">
-														<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="">Full Time</a></li>
-														<li><span>$30 / hr</span></li>
-													</ul>
-													<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam luctus hendrerit metus, ut ullamcorper quam finibus at. Etiam id magna sit amet... <a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="">view more</a></p>
-													<ul class="skill-tags">
-														<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="">HTML</a></li>
-														<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="">PHP</a></li>
-														<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="">CSS</a></li>
-														<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="">Javascript</a></li>
-														<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="">Wordpress</a></li> 	
-													</ul>
-												</div>
-												<div class="job-status-bar">
-													<ul class="like-com">
-														<li>
-															<a href="http://gambolthemes.net/workwise_demo/HTML/index.html#"><i class="la la-heart"></i> Like</a>
-															<img th:src="@{/WorkWise/liked-img.png}" alt="">
-															<span>25</span>
-														</li> 
-														<li><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" class="com"><img th:src="@{/WorkWise/com.png}" alt=""> Comment 15</a></li>
-													</ul>
-													<a><i class="la la-eye"></i>Views 50</a>
-												</div>
-											</div><!--post-bar end-->
-											<div class="comment-section">
-												<div class="plus-ic">
-													<i class="la la-plus"></i>
-												</div>
-												<div class="comment-sec">
-													<ul>
-														<li>
-															<div class="comment-list">
-																<div class="bg-img">
-																	<img th:src="@{/WorkWise/bg-img1.png}" alt="">
-																</div>
-																<div class="comment">
-																	<h3>John Doe</h3>
-																	<span><img th:src="@{/WorkWise/clock.png}" alt=""> 3 min ago</span>
-																	<p>Lorem ipsum dolor sit amet, </p>
-																	<a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="" class="active"><i class="fa fa-reply-all"></i>Reply</a>
-																</div>
-															</div><!--comment-list end-->
-															<ul>
-																<li>
-																	<div class="comment-list">
-																		<div class="bg-img">
-																			<img th:src="@{/WorkWise/bg-img2.png}" alt="">
-																		</div>
-																		<div class="comment">
-																			<h3>John Doe</h3>
-																			<span><img th:src="@{/WorkWise/clock.png}" alt=""> 3 min ago</span>
-																			<p>Hi John </p>
-																			<a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title=""><i class="fa fa-reply-all"></i>Reply</a>
-																		</div>
-																	</div><!--comment-list end-->
-																</li>
-															</ul>
-														</li>
-														<li>
-															<div class="comment-list">
-																<div class="bg-img">
-																	<img th:src="@{/WorkWise/bg-img3.png}" alt="">
-																</div>
-																<div class="comment">
-																	<h3>John Doe</h3>
-																	<span><img th:src="@{/WorkWise/clock.png}" alt=""> 3 min ago</span>
-																	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam luctus hendrerit metus, ut ullamcorper quam finibus at.</p>
-																	<a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title=""><i class="fa fa-reply-all"></i>Reply</a>
-																</div>
-															</div><!--comment-list end-->
-														</li>
-													</ul>
-												</div><!--comment-sec end-->
-												<div class="post-comment">
-													<div class="cm_img">
-														<img th:src="@{/WorkWise/bg-img4.png}" alt="">
-													</div>
-													<div class="comment_box">
-														<form>
-															<input type="text" placeholder="Post a comment">
-															<button type="submit">Send</button>
-														</form>
-													</div>
-												</div><!--post-comment end-->
-											</div><!--comment-section end-->
-										</div><!--posty end-->
-										<div class="process-comm">
-											<a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title=""><img th:src="@{/WorkWise/process-icon.png}" alt=""></a>
-										</div><!--process-comm end-->
-									</div><!--posts-section end-->
-								</div><!--main-ws-sec end-->
-							</div>
+										</div>
+										</div>
+									</div>
+								</div>
 							<div class="col-lg-3 pd-right-none no-pd">
 								<div class="right-sidebar">
 									<div class="widget widget-about">
-										<img th:src="@{/WorkWise/wd-logo.png}" alt="">
-										<h3>Track Time on Workwise</h3>
-										<span>Pay only for the Hours worked</span>
+										<img th:src="@{/images/polytech-logo.jpg}" width="100" alt="">
+										<h3>Polytechnique Maroua</h3>
+										<span>Espace de communication des Etudiants avec l'Administration</span>
 										<div class="sign_link">
-											<h3><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="">Sign up</a></h3>
-											<a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="">Learn More</a>
+											<h3><a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="">Souscription a notre Newsletter</a></h3>
+											<a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="">En savoir plus</a>
 										</div>
 									</div><!--widget-about end-->
 									<div class="widget widget-jobs">
 										<div class="sd-title">
-											<h3>Top Jobs</h3>
+											<h3>Publications Récentes</h3>
 											<i class="la la-ellipsis-v"></i>
 										</div>
 										<div class="jobs-list">
@@ -665,100 +263,7 @@
 											</div><!--job-info end-->
 										</div><!--jobs-list end-->
 									</div><!--widget-jobs end-->
-									<div class="widget widget-jobs">
-										<div class="sd-title">
-											<h3>Most Viewed This Week</h3>
-											<i class="la la-ellipsis-v"></i>
-										</div>
-										<div class="jobs-list">
-											<div class="job-info">
-												<div class="job-details">
-													<h3>Senior Product Designer</h3>
-													<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
-												</div>
-												<div class="hr-rate">
-													<span>$25/hr</span>
-												</div>
-											</div><!--job-info end-->
-											<div class="job-info">
-												<div class="job-details">
-													<h3>Senior UI / UX Designer</h3>
-													<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
-												</div>
-												<div class="hr-rate">
-													<span>$25/hr</span>
-												</div>
-											</div><!--job-info end-->
-											<div class="job-info">
-												<div class="job-details">
-													<h3>Junior Seo Designer</h3>
-													<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
-												</div>
-												<div class="hr-rate">
-													<span>$25/hr</span>
-												</div>
-											</div><!--job-info end-->
-										</div><!--jobs-list end-->
 									</div><!--widget-jobs end-->
-									<div class="widget suggestions full-width">
-										<div class="sd-title">
-											<h3>Most Viewed People</h3>
-											<i class="la la-ellipsis-v"></i>
-										</div><!--sd-title end-->
-										<div class="suggestions-list">
-											<div class="suggestion-usd">
-												<img th:src="@{/WorkWise/s1.png}" alt="">
-												<div class="sgt-text">
-													<h4>Jessica William</h4>
-													<span>Graphic Designer</span>
-												</div>
-												<span><i class="la la-plus"></i></span>
-											</div>
-											<div class="suggestion-usd">
-												<img th:src="@{/WorkWise/s2.png}" alt="">
-												<div class="sgt-text">
-													<h4>John Doe</h4>
-													<span>PHP Developer</span>
-												</div>
-												<span><i class="la la-plus"></i></span>
-											</div>
-											<div class="suggestion-usd">
-												<img th:src="@{/WorkWise/s3.png}" alt="">
-												<div class="sgt-text">
-													<h4>Poonam</h4>
-													<span>Wordpress Developer</span>
-												</div>
-												<span><i class="la la-plus"></i></span>
-											</div>
-											<div class="suggestion-usd">
-												<img th:src="@{/WorkWise/s4.png}" alt="">
-												<div class="sgt-text">
-													<h4>Bill Gates</h4>
-													<span>C &amp; C++ Developer</span>
-												</div>
-												<span><i class="la la-plus"></i></span>
-											</div>
-											<div class="suggestion-usd">
-												<img th:src="@{/WorkWise/s5.png}" alt="">
-												<div class="sgt-text">
-													<h4>Jessica William</h4>
-													<span>Graphic Designer</span>
-												</div>
-												<span><i class="la la-plus"></i></span>
-											</div>
-											<div class="suggestion-usd">
-												<img th:src="@{/WorkWise/s6.png}" alt="">
-												<div class="sgt-text">
-													<h4>John Doe</h4>
-													<span>PHP Developer</span>
-												</div>
-												<span><i class="la la-plus"></i></span>
-											</div>
-											<div class="view-more">
-												<a href="http://gambolthemes.net/workwise_demo/HTML/index.html#" title="">View More</a>
-											</div>
-										</div><!--suggestions-list end-->
-									</div>
 								</div><!--right-sidebar end-->
 							</div>
 						</div>
